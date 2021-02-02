@@ -31,7 +31,7 @@ Sed luctus efficitur erat, dictum scelerisque enim. Ut cursus hendrerit nulla, v
     <changeSet id="3" author="oleg-stefura">
         <insert tableName="profile">
             <column name="id" value="3"/>
-            <column name="user_id" value="4"/>
+            <column name="user_id" value="3"/>
             <column name="description" value="Very short description"/>
             <column name="rate" value="14"/>
             <column name="profession" value="Psychologist"/>
