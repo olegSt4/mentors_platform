@@ -27,12 +27,8 @@
             <column name="phone" type="varchar(17)">
                 <constraints unique="true"/>
             </column>
-            <column name="rating" type="double" defaultValue="0">
-                <constraints nullable="false"/>
-            </column>
-            <column name="ratings_count" type="BIGINT" defaultValue="0">
-                <constraints nullable="false"/>
-            </column>
+            <column name="rating" type="double" defaultValue="0"/>
+            <column name="ratings_count" type="BIGINT" defaultValue="0"/>
             <column name="registration_date" type="date">
                 <constraints nullable="false"/>
             </column>
