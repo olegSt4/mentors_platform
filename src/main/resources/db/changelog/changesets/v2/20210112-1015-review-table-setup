@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="oleg-stefura">
+        <createTable tableName="review">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="profile_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="review_profile_FK" references="profile(id)"/>
+            </column>
+            <column name="owner_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="review_user_FK" references="user(id)"/>
+            </column>
+            <column name="comment" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="double"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
