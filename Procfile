@@ -1,1 +1,1 @@
-web: java -jar target/mentors-platform.war
+web: java -jar target/mentors-platform.war -Dserver.port=$PORT
