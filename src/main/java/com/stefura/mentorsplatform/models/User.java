@@ -14,11 +14,18 @@ public class User {
     @Column(name="full_name", nullable=false)
     private String fullName;
 
-    @Column(name="birth_date")
-    private Date birthDate;
-
     @Column(name="email", nullable=false)
     private String email;
+
+    @Column(name="password", nullable=false)
+    private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="type", nullable=false)
+    private UserType type;
+
+    @Column(name="birth_date")
+    private Date birthDate;
 
     @Column(name="phone")
     private String phone;
@@ -26,15 +33,8 @@ public class User {
     @Column(name="rating")
     private Double rating;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name="type", nullable=false)
-    private UserType type;
-
-    @Column(name="login")
-    private String login;
-
-    @Column(name="password")
-    private String password;
+    @Column(name="ratings_count")
+    private Long ratingsCount;
 
     @Column(name="registration_date")
     private Date registrationDate;
@@ -45,10 +45,9 @@ public class User {
     public User() {
     }
 
-    public User(String fullName, String email, String login, String password, UserType type) {
+    public User(String fullName, String email, String password, UserType type) {
         this.fullName = fullName;
         this.email = email;
-        this.login = login;
         this.password = password;
         this.type = type;
     }
@@ -69,20 +68,36 @@ public class User {
         this.fullName = fullName;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getPhone() {
@@ -101,28 +116,12 @@ public class User {
         this.rating = rating;
     }
 
-    public UserType getType() {
-        return type;
+    public Long getRatingsCount() {
+        return ratingsCount;
     }
 
-    public void setType(UserType type) {
-        this.type = type;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setRatingsCount(Long ratingsCount) {
+        this.ratingsCount = ratingsCount;
     }
 
     public Date getRegistrationDate() {
@@ -143,11 +142,14 @@ public class User {
 
     @Override
     public String toString() {
-        return "user[ id: " + id +
-                "type: " + type +
-                "rating: " + rating +
-                "registered: " + registrationDate +
-                "last visit: " + lastVisitDate;
+        return "User{" +
+                "id=" + id +
+                ", rating=" + rating +
+                ", ratingsCount=" + ratingsCount +
+                ", type=" + type +
+                ", registrationDate=" + registrationDate +
+                ", lastVisitDate=" + lastVisitDate +
+                '}';
     }
 
     @Override
@@ -161,16 +163,15 @@ public class User {
                 email.equals(user.email) &&
                 Objects.equals(phone, user.phone) &&
                 Objects.equals(rating, user.rating) &&
-                type.equals(user.type) &&
-                login.equals(user.login) &&
+                Objects.equals(ratingsCount, user.ratingsCount) &&
+                type == user.type &&
                 password.equals(user.password) &&
-                Objects.equals(registrationDate, user.registrationDate) &&
-                Objects.equals(lastVisitDate, user.lastVisitDate);
+                registrationDate.equals(user.registrationDate) &&
+                lastVisitDate.equals(user.lastVisitDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, fullName, birthDate, email, phone, rating, type,
-                login, password, registrationDate, lastVisitDate);
+        return Objects.hash(id, fullName, birthDate, email, phone, rating, ratingsCount, type, password, registrationDate, lastVisitDate);
     }
 }

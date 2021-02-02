@@ -6,10 +6,10 @@
 
     <changeSet id="1" author="oleg-stefura">
         <createTable tableName="avatar">
-            <column name="id" type="int" autoIncrement="true">
+            <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="user_id" type="int">
+            <column name="user_id" type="BIGINT">
                 <constraints nullable="false" foreignKeyName="image_user_id_FK" references="user(id)"/>
             </column>
             <column name="name" type="varchar(128)">
@@ -17,4 +17,5 @@
             </column>
         </createTable>
     </changeSet>
+
 </databaseChangeLog>

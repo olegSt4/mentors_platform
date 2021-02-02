@@ -9,7 +9,7 @@ import java.util.Objects;
 public class AuthDto {
     @NotNull
     @NotEmpty
-    @ApiModelProperty(value="User's login. Used for authentication", example="login1999", required=true)
+    @ApiModelProperty(value="User's login (email). Used for authentication", example="random.mail@gmail.com", required=true)
     private String login;
 
     @NotNull

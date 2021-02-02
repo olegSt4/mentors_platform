@@ -1,32 +1,32 @@
-package com.stefura.mentorsplatform.services;
-
-import com.stefura.mentorsplatform.exceptions.EntityNotFoundException;
-import com.stefura.mentorsplatform.models.Aspect;
-import com.stefura.mentorsplatform.models.Profile;
-import com.stefura.mentorsplatform.models.User;
-import com.stefura.mentorsplatform.models.UserType;
-import com.stefura.mentorsplatform.repositories.AspectRepository;
-import com.stefura.mentorsplatform.repositories.ProfileRepository;
-import com.stefura.mentorsplatform.repositories.UserRepository;
-import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
-import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-@SpringBootTest
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class UserServiceTest {
+//package com.stefura.mentorsplatform.services;
+//
+//import com.stefura.mentorsplatform.exceptions.EntityNotFoundException;
+//import com.stefura.mentorsplatform.models.Aspect;
+//import com.stefura.mentorsplatform.models.Profile;
+//import com.stefura.mentorsplatform.models.User;
+//import com.stefura.mentorsplatform.models.UserType;
+//import com.stefura.mentorsplatform.repositories.AspectRepository;
+//import com.stefura.mentorsplatform.repositories.ProfileRepository;
+//import com.stefura.mentorsplatform.repositories.UserRepository;
+//import org.junit.jupiter.api.*;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//
+//import javax.transaction.Transactional;
+//import java.time.LocalDate;
+//import java.time.ZoneId;
+//import java.util.Arrays;
+//import java.util.Date;
+//import java.util.List;
+//
+//import static org.junit.jupiter.api.Assertions.*;
+//
+//@SpringBootTest
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+//class UserServiceTest {
 //    @Autowired
 //    private UserRepository userRepository;
 //
@@ -186,8 +186,8 @@ class UserServiceTest {
 //        User mrMentor = userRepository.findByEmail("john.d.15@gmail.com").get();
 //
 //        Date previousVisit = mrMentor.getLastVisitDate();
-//        mrMentor = userService.updateUserVisitByLogin(mrMentor.getLogin());
+//        mrMentor = userService.updateUserVisitByUsername(mrMentor.getLogin());
 //
 //        assertTrue(previousVisit.before(mrMentor.getLastVisitDate()));
 //    }
-}
+//}

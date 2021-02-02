@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="oleg-stefura">
+        <insert tableName="user">
+            <column name="id" value="1"/>
+            <column name="full_name" value="Eva D."/>
+            <column name="email" value="eva.d.1990@gmail.com"/>
+            <column name="password" value="tempUnHashedPass"/>
+            <column name="type" value="MENTOR"/>
+            <column name="birth_date" value="1990-10-15"/>
+            <column name="phone" value="+380-989-8989-89"/>
+            <column name="rating" value="4.0"/>
+            <column name="ratings_count" value="4"/>
+            <column name="registration_date" value="2021-01-04"/>
+            <column name="last_visit_date" value="2021-01-05"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="2" author="oleg-stefura">
+        <insert tableName="user">
+            <column name="id" value="2"/>
+            <column name="full_name" value="Jake S."/>
+            <column name="email" value="jake.s.1984@gmail.com"/>
+            <column name="password" value="tempUnHashedPass"/>
+            <column name="type" value="MENTOR"/>
+            <column name="birth_date" value="1984-04-22"/>
+            <column name="phone" value="+380-686-8686-86"/>
+            <column name="rating" value="5.0"/>
+            <column name="ratings_count" value="3"/>
+            <column name="registration_date" value="2021-01-03"/>
+            <column name="last_visit_date" value="2021-01-08"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="3" author="oleg-stefura">
+        <insert tableName="user">
+            <column name="id" value="3"/>
+            <column name="full_name" value="Isabella M."/>
+            <column name="email" value="isabella.m@gmail.com"/>
+            <column name="password" value="tempUnHashedPass"/>
+            <column name="type" value="MENTOR"/>
+            <column name="rating" value="3.5"/>
+            <column name="ratings_count" value="3"/>
+            <column name="registration_date" value="2021-01-04"/>
+            <column name="last_visit_date" value="2021-01-04"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="4" author="oleg-stefura">
+        <insert tableName="user">
+            <column name="id" value="4"/>
+            <column name="full_name" value="Tomas P."/>
+            <column name="email" value="tomas.p.1986@gmail.com"/>
+            <column name="password" value="tempUnHashedPass"/>
+            <column name="type" value="MENTOR"/>
+            <column name="birth_date" value="1986-08-08"/>
+            <column name="phone" value="+380-982-2111-81"/>
+            <column name="rating" value="4.0"/>
+            <column name="ratings_count" value="7"/>
+            <column name="registration_date" value="2021-01-05"/>
+            <column name="last_visit_date" value="2021-01-11"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="5" author="oleg-stefura">
+        <insert tableName="user">
+            <column name="id" value="5"/>
+            <column name="full_name" value="Oleg S."/>
+            <column name="email" value="oleg.surname@gmail.com"/>
+            <column name="password" value="tempUnHashedPass"/>
+            <column name="type" value="CLIENT"/>
+            <column name="birth_date" value="1994-07-25"/>
+            <column name="phone" value="+380-961-5519-01"/>
+            <column name="registration_date" value="2021-01-07"/>
+            <column name="last_visit_date" value="2021-01-07"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="6" author="oleg-stefura">
+        <insert tableName="user">
+            <column name="id" value="6"/>
+            <column name="full_name" value="Ivan I."/>
+            <column name="email" value="ivanov.ivan@urk.net"/>
+            <column name="password" value="tempUnHashedPass"/>
+            <column name="type" value="CLIENT"/>
+            <column name="birth_date" value="1989-11-02"/>
+            <column name="registration_date" value="2021-01-06"/>
+            <column name="last_visit_date" value="2021-01-09"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

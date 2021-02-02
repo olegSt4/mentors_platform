@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="oleg-stefura">
+        <insert tableName="profile">
+            <column name="id" value="1"/>
+            <column name="user_id" value="1"/>
+            <column name="description" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in magna ultrices dolor bibendum tincidunt at quis orci. Nulla tincidunt ultrices erat, vel interdum metus finibus a. Quisque id elit aliquet, gravida mi suscipit, consectetur ligula. Mauris hendrerit mollis consequat. In in rutrum est. Nullam commodo ipsum ut metus elementum, vel posuere ante vestibulum. Quisque luctus a erat id accumsan. Donec porta tortor in mauris suscipit, non fermentum sapien tincidunt. Mauris at odio imperdiet, accumsan ligula id, tempus tortor. Suspendisse condimentum arcu nec risus feugiat, semper aliquam ligula maximus.
+Sed luctus efficitur erat, dictum scelerisque enim. Ut cursus hendrerit nulla, vitae porttitor metus efficitur quis. In volutpat elementum nisi, vel rhoncus turpis luctus eget. In hac habitasse platea dictumst. Etiam sed rhoncus urna. Cras eleifend lobortis ante. Fusce fringilla, quam at varius commodo, eros leo pellentesque elit, vitae dictum justo nibh faucibus neque. Mauris rhoncus libero at nisi dapibus, quis porttitor nibh convallis. Curabitur mi orci, eleifend in enim et, porta sollicitudin nisi. Aliquam facilisis et eros sed ullamcorper. Donec varius luctus fermentum. Mauris condimentum enim non faucibus eleifend. Vestibulum congue mi hendrerit varius mollis."/>
+            <column name="rate" value="12"/>
+            <column name="profession" value="Marketing consultant"/>
+            <column name="views_count" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="2" author="oleg-stefura">
+        <insert tableName="profile">
+            <column name="id" value="2"/>
+            <column name="user_id" value="2"/>
+            <column name="description" value="In lobortis est id vestibulum iaculis. Fusce dignissim, nulla vitae pretium porta, mi nisi dignissim mi, a viverra tellus diam et mauris. Vestibulum efficitur elit ut augue porttitor elementum. Vestibulum sit amet urna dapibus, tincidunt enim lacinia, pretium justo. Suspendisse potenti. Etiam congue rhoncus vulputate. Cras ultrices condimentum elit, ac convallis metus. Nullam interdum augue risus, maximus cursus est fringilla et. Proin quis urna ultrices mauris hendrerit porttitor. Sed vehicula, turpis quis aliquam condimentum, nibh ante facilisis magna, vitae egestas nisi ipsum ut velit. Cras vel malesuada dui.
+            Nullam pretium ut nibh ut fermentum. Nullam a lacus euismod, mollis nibh ac, laoreet lectus. Mauris tristique, dolor nec commodo facilisis, enim massa scelerisque velit, in volutpat diam velit quis libero. Mauris finibus elit luctus, dignissim nibh a, commodo enim. Sed suscipit blandit urna non facilisis. Mauris eros lectus, fringilla sit amet pellentesque id, auctor varius enim. Mauris ut magna sit amet purus laoreet facilisis. Sed posuere elit ipsum, at aliquet ante dictum ac."/>
+            <column name="rate" value="11.5"/>
+            <column name="profession" value="Frontend engineer"/>
+            <column name="views_count" value="12"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="3" author="oleg-stefura">
+        <insert tableName="profile">
+            <column name="id" value="3"/>
+            <column name="user_id" value="4"/>
+            <column name="description" value="Very short description"/>
+            <column name="rate" value="14"/>
+            <column name="profession" value="Psychologist"/>
+            <column name="views_count" value="16"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="4" author="oleg-stefura">
+        <insert tableName="profile">
+            <column name="id" value="4"/>
+            <column name="user_id" value="4"/>
+            <column name="description" value="The description is not so short, but still not long."/>
+            <column name="rate" value="12"/>
+            <column name="profession" value="Product manager"/>
+            <column name="views_count" value="9"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

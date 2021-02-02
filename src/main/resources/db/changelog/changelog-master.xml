@@ -6,15 +6,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
     http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <include file="changesets/20201219-1200-initial-setup.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20201219-1310-initial-data.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210102-1540-db-structure-refact.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210112-1500-avatar-table-setup.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210112-1700-avatar-initial-data.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210114-1320-id-type-replacement.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210116-1545-facebook-column-insertion.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210125-1400-user-security-fields-setup.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210127-1400-review-table-setup.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210127-1512-review-table-population.xml" relativeToChangelogFile="true"/>
-    <include file="changesets/20210128-1918-views-count-column-insertion.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210105-1200-initial-setup.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210105-1412-initial-users.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210105-1442-initial-profiles.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210105-1530-initial-aspects.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210105-1542-initial-profile-aspect-relations.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210110-1147-avatar-table-setup.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210110-1219-initial-avatars.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210112-1015-review-table-setup.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210112-1207-initial-reviews.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

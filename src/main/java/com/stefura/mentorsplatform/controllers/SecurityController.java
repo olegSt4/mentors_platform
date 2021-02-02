@@ -50,7 +50,7 @@ public class SecurityController {
         );
 
         UserDetails userDetails = userService.loadUserByUsername(authDto.getLogin());
-        userService.updateUserVisitByLogin(authDto.getLogin());
+        userService.updateUserVisitByUsername(authDto.getLogin());
         return new JwtTokenDto(jwtProvider.generateToken(userDetails));
     }
 
@@ -62,7 +62,7 @@ public class SecurityController {
 
         userService.addUser(userToAdd);
 
-        UserDetails userDetails = userService.loadUserByUsername(userToAdd.getLogin());
+        UserDetails userDetails = userService.loadUserByUsername(userToAdd.getEmail());
         return new JwtTokenDto(jwtProvider.generateToken(userDetails));
     }
 }

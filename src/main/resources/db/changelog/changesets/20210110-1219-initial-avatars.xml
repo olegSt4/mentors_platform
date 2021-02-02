@@ -35,4 +35,21 @@
             <column name="name" value="tomas-p.png"/>
         </insert>
     </changeSet>
+
+    <changeSet id="5" author="oleg-stefura">
+        <insert tableName="avatar">
+            <column name="id" value="5"/>
+            <column name="user_id" value="5"/>
+            <column name="name" value="oleg-s.jpg"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="6" author="oleg-stefura">
+        <insert tableName="avatar">
+            <column name="id" value="6"/>
+            <column name="user_id" value="6"/>
+            <column name="name" value="ivan-i.jpg"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

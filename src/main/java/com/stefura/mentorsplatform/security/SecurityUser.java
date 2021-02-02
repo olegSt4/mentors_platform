@@ -18,7 +18,7 @@ public class SecurityUser implements UserDetails {
     private final Boolean isEnabled;
 
     public SecurityUser(User user) {
-        this.username = user.getLogin();
+        this.username = user.getEmail();
         this.password = user.getPassword();
         this.authorities = Set.of(new SimpleGrantedAuthority(user.getType().name()));
 
