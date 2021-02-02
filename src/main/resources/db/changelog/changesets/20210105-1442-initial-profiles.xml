@@ -18,7 +18,7 @@ Sed luctus efficitur erat, dictum scelerisque enim. Ut cursus hendrerit nulla, v
 
     <changeSet id="2" author="oleg-stefura">
         <insert tableName="profile">
-            <column name="id" value="1"/>
+            <column name="id" value="2"/>
             <column name="user_id" value="2"/>
             <column name="description" value="In lobortis est id vestibulum iaculis. Fusce dignissim, nulla vitae pretium porta, mi nisi dignissim mi, a viverra tellus diam et mauris. Vestibulum efficitur elit ut augue porttitor elementum. Vestibulum sit amet urna dapibus, tincidunt enim lacinia, pretium justo. Suspendisse potenti. Etiam congue rhoncus vulputate. Cras ultrices condimentum elit, ac convallis metus. Nullam interdum augue risus, maximus cursus est fringilla et. Proin quis urna ultrices mauris hendrerit porttitor. Sed vehicula, turpis quis aliquam condimentum, nibh ante facilisis magna, vitae egestas nisi ipsum ut velit. Cras vel malesuada dui.
             Nullam pretium ut nibh ut fermentum. Nullam a lacus euismod, mollis nibh ac, laoreet lectus. Mauris tristique, dolor nec commodo facilisis, enim massa scelerisque velit, in volutpat diam velit quis libero. Mauris finibus elit luctus, dignissim nibh a, commodo enim. Sed suscipit blandit urna non facilisis. Mauris eros lectus, fringilla sit amet pellentesque id, auctor varius enim. Mauris ut magna sit amet purus laoreet facilisis. Sed posuere elit ipsum, at aliquet ante dictum ac."/>
@@ -49,7 +49,5 @@ Sed luctus efficitur erat, dictum scelerisque enim. Ut cursus hendrerit nulla, v
             <column name="views_count" value="9"/>
         </insert>
     </changeSet>
-
-
 
 </databaseChangeLog>

@@ -66,7 +66,7 @@ public class InitialDataConfig {
         saveInitialAvatar(3L, "isabella-m.png");
         saveInitialAvatar(4L, "tomas-p.png");
         saveInitialAvatar(5L, "oleg-s.jpg");
-        saveInitialAvatar(6L, "tomas-p.png");
+        saveInitialAvatar(6L, "ivan-i.jpg");
 
         LOGGER.info("Initial avatars successfully provided");
     }
