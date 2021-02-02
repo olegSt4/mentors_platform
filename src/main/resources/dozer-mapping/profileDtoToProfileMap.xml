@@ -4,8 +4,8 @@
           xsi:schemaLocation="http://dozer.sourceforge.net
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
     <mapping>
-        <class-a>com.patternica.internship.dto.ProfileDto</class-a>
-        <class-b>com.patternica.internship.models.Profile</class-b>
+        <class-a>com.stefura.mentorsplatform.dto.ProfileDto</class-a>
+        <class-b>com.stefura.mentorsplatform.models.Profile</class-b>
         <field>
             <a is-accessible="true">profileAspects</a>
             <b is-accessible="true">profileAspects</b>
