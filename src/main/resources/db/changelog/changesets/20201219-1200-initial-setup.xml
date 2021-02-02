@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="1" author="oleg-stefura">
+        <createTable tableName="profile">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="description" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rate" type="double"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="oleg-stefura">
+        <createTable tableName="aspect">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="oleg-stefura">
+        <createTable tableName="user">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="full_name" type="varchar(128)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="date"/>
+            <column name="email" type="varchar(128)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="phone" type="varchar(17)">
+                <constraints unique="true"/>
+            </column>
+            <column name="title" type="varchar(40)"/>
+            <column name="rating" type="double"/>
+            <column name="type" type="varchar(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="profile_id" type="int">
+                <constraints foreignKeyName="profile_id_FK" references="profile(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="oleg-stefura">
+        <createTable tableName="profile_aspect">
+            <column name="profile_id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="profile_aspect_PK"
+                             foreignKeyName="pa_profile_id_FK" references="profile(id)"/>
+            </column>
+            <column name="aspect_id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="profile_aspect_PK"
+                             foreignKeyName="pa_aspect_id_FK" references="aspect(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="5" author="oleg-stefura">
+        <sql splitStatements="false">
+            alter table user
+            add constraint check_type check(type = 'MENTOR' OR type = 'CLIENT')
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

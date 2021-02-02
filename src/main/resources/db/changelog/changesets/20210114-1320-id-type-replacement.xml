@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    
+    <changeSet id="1" author="oleg-stefura">
+        <dropForeignKeyConstraint baseTableName="avatar" constraintName="image_user_id_FK"/>
+    </changeSet>
+
+    <changeSet id="2" author="oleg-stefura">
+        <dropForeignKeyConstraint baseTableName="profile" constraintName="user_id_FK"/>
+    </changeSet>
+
+    <changeSet id="3" author="oleg-stefura">
+        <dropForeignKeyConstraint baseTableName="profile_aspect" constraintName="pa_aspect_id_FK"/>
+        <dropForeignKeyConstraint baseTableName="profile_aspect" constraintName="pa_profile_id_FK"/>
+    </changeSet>
+
+    <changeSet id="4" author="oleg-stefura">
+        <modifyDataType tableName="user" columnName="id" newDataType="BIGINT"/>
+        <addAutoIncrement tableName="user" columnName="id" columnDataType="BIGINT"/>
+    </changeSet>
+
+    <changeSet id="5" author="oleg-stefura">
+        <modifyDataType tableName="aspect" columnName="id" newDataType="BIGINT"/>
+        <addAutoIncrement tableName="aspect" columnName="id" columnDataType="BIGINT"/>
+    </changeSet>
+
+    <changeSet id="6" author="oleg-stefura">
+        <modifyDataType tableName="profile" columnName="id" newDataType="BIGINT"/>
+        <addAutoIncrement tableName="profile" columnName="id" columnDataType="BIGINT"/>
+        <modifyDataType tableName="profile" columnName="user_id" newDataType="BIGINT"/>
+        <addForeignKeyConstraint baseTableName="profile" baseColumnNames="user_id" constraintName="profile_user_id_FK"
+                                 referencedTableName="user" referencedColumnNames="id"/>
+    </changeSet>
+    
+    <changeSet id="7" author="oleg-stefura">
+        <modifyDataType tableName="profile_aspect" columnName="profile_id" newDataType="BIGINT"/>
+        <modifyDataType tableName="profile_aspect" columnName="aspect_id" newDataType="BIGINT"/>
+        <addForeignKeyConstraint baseTableName="profile_aspect" baseColumnNames="profile_id"
+                                 constraintName="pa_profile_id_FK"
+                                 referencedTableName="profile" referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="profile_aspect" baseColumnNames="aspect_id"
+                                 constraintName="pa_aspect_id_FK"
+                                 referencedTableName="aspect" referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="8" author="oleg-stefura">
+        <modifyDataType tableName="avatar" columnName="id" newDataType="BIGINT"/>
+        <addAutoIncrement tableName="avatar" columnName="id" columnDataType="BIGINT"/>
+        <modifyDataType tableName="avatar" columnName="user_id" newDataType="BIGINT"/>
+        <addForeignKeyConstraint baseTableName="avatar" baseColumnNames="user_id" constraintName="avatar_user_id_FK"
+                                 referencedTableName="user" referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

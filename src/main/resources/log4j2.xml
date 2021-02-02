@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss} %5p  %-60.60c  :  %m %n %ex
+        </Property>
+    </Properties>
+    <Appenders>
+        <RollingFile name="fileLogging"
+                     filePattern="logs/log4j2-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+        </RollingFile>
+        <Console name="consoleLogging" target="SYSTEM_OUT">
+            <PatternLayout>
+                <Pattern>${LOG_PATTERN}</Pattern>
+            </PatternLayout>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="fileLogging"/>
+            <AppenderRef ref="consoleLogging"/>
+        </Root>
+    </Loggers>
+</Configuration>

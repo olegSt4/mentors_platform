@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="oleg-stefura">
+        <addColumn tableName="profile">
+            <column name="user_id" type="int">
+                <constraints foreignKeyName="user_id_FK" references="user(id)"/>
+            </column>
+        </addColumn>
+    </changeSet>
+    
+    <changeSet id="2" author="oleg-stefura">
+        <update tableName="profile">
+            <column name="user_id" valueComputed="(SELECT u.id FROM user u WHERE u.profile_id = profile.id)"/>
+        </update>
+    </changeSet>
+     
+    <changeSet id="3" author="oleg-stefura">
+        <dropForeignKeyConstraint baseTableName="user" constraintName="profile_id_FK"/>
+        <dropColumn tableName="user" columnName="profile_id"/>
+    </changeSet>
+    
+    <changeSet id="4" author="oleg-stefura">
+        <addColumn tableName="profile">
+            <column name="profession" type="varchar(40)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="5" author="oleg-stefura">
+        <update tableName="profile">
+            <column name="profession" valueComputed="(SELECT u.title FROM user u WHERE u.id = profile.user_id)"/>
+        </update>
+    </changeSet>
+
+    <changeSet id="6" author="oleg-stefura">
+        <dropColumn tableName="user" columnName="title"/>
+    </changeSet>
+
+    <changeSet id="7" author="oleg-stefura">
+        <modifyDataType tableName="user" columnName="type" newDataType="ENUM('CLIENT', 'MENTOR')"/>
+    </changeSet>
+</databaseChangeLog>

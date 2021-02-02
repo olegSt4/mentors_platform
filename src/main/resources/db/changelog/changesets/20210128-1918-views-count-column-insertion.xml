@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="oleg-stefura">
+        <addColumn tableName="profile">
+            <column name="views_count" type="BIGINT" defaultValue="0"/>
+        </addColumn>
+    </changeSet>
+    
+    <changeSet id="2" author="oleg-stefura">
+        <update tableName="profile">
+            <column name="views_count" value="15"/>
+            <where>id=1</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="3" author="oleg-stefura">
+        <update tableName="profile">
+            <column name="views_count" value="19"/>
+            <where>id=2</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="4" author="oleg-stefura">
+        <update tableName="profile">
+            <column name="views_count" value="11"/>
+            <where>id=3</where>
+        </update>
+    </changeSet>
+
+    <changeSet id="5" author="oleg-stefura">
+        <update tableName="profile">
+            <column name="views_count" value="24"/>
+            <where>id=4</where>
+        </update>
+    </changeSet>
+</databaseChangeLog>

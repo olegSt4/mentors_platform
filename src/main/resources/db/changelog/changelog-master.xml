@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <include file="changesets/20201219-1200-initial-setup.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20201219-1310-initial-data.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210102-1540-db-structure-refact.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210112-1500-avatar-table-setup.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210112-1700-avatar-initial-data.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210114-1320-id-type-replacement.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210116-1545-facebook-column-insertion.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210125-1400-user-security-fields-setup.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210127-1400-review-table-setup.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210127-1512-review-table-population.xml" relativeToChangelogFile="true"/>
+    <include file="changesets/20210128-1918-views-count-column-insertion.xml" relativeToChangelogFile="true"/>
+</databaseChangeLog>
