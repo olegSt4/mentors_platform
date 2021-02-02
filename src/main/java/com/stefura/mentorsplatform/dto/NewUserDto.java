@@ -13,10 +13,6 @@ public class NewUserDto {
     private String email;
 
     @NotNull
-    @ApiModelProperty(value="User's login. Used for authentication", example="user5541", required=true)
-    private String login;
-
-    @NotNull
     @ApiModelProperty(value="User's password. Used for authentication", example="qwerty123", required=true)
     private String password;
 
@@ -43,14 +39,6 @@ public class NewUserDto {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getPassword() {
@@ -107,7 +95,6 @@ public class NewUserDto {
         if (o == null || getClass() != o.getClass()) return false;
         NewUserDto that = (NewUserDto) o;
         return email.equals(that.email) &&
-                login.equals(that.login) &&
                 password.equals(that.password) &&
                 fullName.equals(that.fullName) &&
                 Objects.equals(birthDate, that.birthDate) &&
@@ -118,6 +105,6 @@ public class NewUserDto {
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, login, password, fullName, birthDate, phone, rating, type);
+        return Objects.hash(email, password, fullName, birthDate, phone, rating, type);
     }
 }

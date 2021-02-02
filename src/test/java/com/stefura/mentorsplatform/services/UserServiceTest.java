@@ -186,7 +186,7 @@ class UserServiceTest {
         User mrMentor = userRepository.findByEmail("john.d.15@gmail.com").get();
 
         Date previousVisit = mrMentor.getLastVisitDate();
-        mrMentor = userService.updateUserVisitByLogin(mrMentor.getLogin());
+        mrMentor = userService.updateUserVisitByUsername(mrMentor.getLogin());
 
         assertTrue(previousVisit.before(mrMentor.getLastVisitDate()));
     }

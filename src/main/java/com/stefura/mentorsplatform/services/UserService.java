@@ -36,10 +36,10 @@ public class UserService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userRepository.findByLogin(login).orElseThrow(() -> {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> {
             throw new UsernameNotFoundException(
-                    "The user with this username(login) [" + login + "] does not exist");
+                    "The user with this username(email) [" + email + "] does not exist");
         });
 
         return new SecurityUser(user);
@@ -115,9 +115,9 @@ public class UserService implements UserDetailsService {
         return userToAdd;
     }
 
-    public User updateUserVisitByLogin(String login) {
-        User user = userRepository.findByLogin(login).orElseThrow(() -> {
-            throw new EntityNotFoundException("The user such email (" + login + ") not found!");
+    public User updateUserVisitByUsername(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> {
+            throw new EntityNotFoundException("The user such email (" + email + ") not found!");
         });
 
         user.setLastVisitDate(new Date());

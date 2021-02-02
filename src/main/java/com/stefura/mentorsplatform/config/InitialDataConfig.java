@@ -29,8 +29,8 @@ public class InitialDataConfig {
             "jake.s.1984@gmail.com",
             "isabella.m@gmail.com",
             "tomas.p.1986@gmail.com",
-            "john.doe@gmail.com",
-            "stefura.3.1@gmail.com"
+            "oleg.surname@gmail.com",
+            "ivanov.ivan@urk.net"
     );
 
     private UserRepository userRepository;
@@ -65,6 +65,8 @@ public class InitialDataConfig {
         saveInitialAvatar(2L, "jake-s.png");
         saveInitialAvatar(3L, "isabella-m.png");
         saveInitialAvatar(4L, "tomas-p.png");
+        saveInitialAvatar(5L, "oleg-s.jpg");
+        saveInitialAvatar(6L, "tomas-p.png");
 
         LOGGER.info("Initial avatars successfully provided");
     }
@@ -103,16 +105,8 @@ public class InitialDataConfig {
                 break;
             }
 
-            user.get().setLogin("login" + user.get().getId());
             user.get().setPassword(passwordEncoder.encode(INITIAL_USER_PASS));
             userRepository.save(user.get());
-        }
-
-        for (User client : userRepository.findByType(UserType.CLIENT)) {
-            if (client.getPassword().startsWith("temp")) {
-                client.setPassword(passwordEncoder.encode(INITIAL_USER_PASS));
-                userRepository.save(client);
-            }
         }
 
         LOGGER.info("Initial password providing completed!");
