@@ -1,1 +1,1 @@
-web: mvn clean spring-boot:run
+web: java -jar target/mentors-platform.war
