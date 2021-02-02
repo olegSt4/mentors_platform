@@ -1,1 +1,1 @@
-web: java -jar target/mentors-platform-0.0.1-SNAPSHOT.jar
+web: java -war target/mentors-platform.war
