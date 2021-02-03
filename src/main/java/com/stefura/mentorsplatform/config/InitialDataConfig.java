@@ -1,7 +1,6 @@
 package com.stefura.mentorsplatform.config;
 
 import com.stefura.mentorsplatform.models.User;
-import com.stefura.mentorsplatform.models.UserType;
 import com.stefura.mentorsplatform.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -31,6 +31,14 @@ public class InitialDataConfig {
             "tomas.p.1986@gmail.com",
             "oleg.surname@gmail.com",
             "ivanov.ivan@urk.net"
+    );
+    private static final Map<Long, String> INITIAL_USERS_AVATARS_NAMES = Map.of(
+            1L, "eva-d.png",
+            2L, "jake-s.png",
+            3L, "isabella-m.png",
+            4L, "tomas-p.png",
+            5L, "oleg-s.jpg",
+            6L, "ivan-i.jpg"
     );
 
     private UserRepository userRepository;
@@ -61,14 +69,26 @@ public class InitialDataConfig {
 
         LOGGER.info("Setting up initial avatars...");
 
-        saveInitialAvatar(1L, "eva-d.png");
-        saveInitialAvatar(2L, "jake-s.png");
-        saveInitialAvatar(3L, "isabella-m.png");
-        saveInitialAvatar(4L, "tomas-p.png");
-        saveInitialAvatar(5L, "oleg-s.jpg");
-        saveInitialAvatar(6L, "ivan-i.jpg");
+        INITIAL_USERS_AVATARS_NAMES.forEach(this::saveInitialAvatar);
 
         LOGGER.info("Initial avatars successfully provided");
+    }
+
+    @PostConstruct
+    public void provideInitialHashedPasswords() {
+        LOGGER.info("Initial password providing...");
+
+        for (String userEmail : INITIAL_USERS_EMAILS) {
+            Optional<User> user = userRepository.findByEmail(userEmail);
+            if (user.isEmpty() || !user.get().getPassword().equals(TEMP_UN_HASHED_PASS)) {
+                break;
+            }
+
+            user.get().setPassword(passwordEncoder.encode(INITIAL_USER_PASS));
+            userRepository.save(user.get());
+        }
+
+        LOGGER.info("Initial password providing completed!");
     }
 
     private void saveInitialAvatar(Long userId, String fileName) {
@@ -93,22 +113,5 @@ public class InitialDataConfig {
         } catch (IOException ex) {
             LOGGER.error("Error while saving initial avatar: " + fileName, ex);
         }
-    }
-
-    @PostConstruct
-    public void provideInitialSecurity() {
-        LOGGER.info("Initial password providing...");
-
-        for (String userEmail : INITIAL_USERS_EMAILS) {
-            Optional<User> user = userRepository.findByEmail(userEmail);
-            if (user.isEmpty() || !user.get().getPassword().equals(TEMP_UN_HASHED_PASS)) {
-                break;
-            }
-
-            user.get().setPassword(passwordEncoder.encode(INITIAL_USER_PASS));
-            userRepository.save(user.get());
-        }
-
-        LOGGER.info("Initial password providing completed!");
     }
 }

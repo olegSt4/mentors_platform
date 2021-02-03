@@ -54,10 +54,6 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new EntityNotFoundException("User with such id (" + id + ") not found!"));
     }
 
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-
     public List<User> getAllClients() {
         return userRepository.findByType(UserType.CLIENT);
     }

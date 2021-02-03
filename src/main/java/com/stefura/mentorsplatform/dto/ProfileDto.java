@@ -12,7 +12,7 @@ public class ProfileDto {
     private Double rate;
     private String profession;
     private String facebook;
-    private Set<AspectDto> profileAspects = new HashSet<>();
+    private Set<String> profileAspects = new HashSet<>();
 
     public String getDescription() {
         return description;
@@ -46,11 +46,11 @@ public class ProfileDto {
         this.facebook = facebook;
     }
 
-    public Set<AspectDto> getProfileAspects() {
+    public Set<String> getProfileAspects() {
         return profileAspects;
     }
 
-    public void setProfileAspects(Set<AspectDto> profileAspects) {
+    public void setProfileAspects(Set<String> profileAspects) {
         this.profileAspects = profileAspects;
     }
 

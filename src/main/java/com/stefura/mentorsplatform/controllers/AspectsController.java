@@ -1,6 +1,6 @@
 package com.stefura.mentorsplatform.controllers;
 
-import com.stefura.mentorsplatform.dto.AspectDto;
+import com.stefura.mentorsplatform.models.Aspect;
 import com.stefura.mentorsplatform.services.AspectService;
 import com.stefura.mentorsplatform.services.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -28,10 +28,10 @@ public class AspectsController {
     }
 
     @GetMapping
-    @ApiOperation(value="Provides the list of all aspects, registered in the system", response= AspectDto.class)
-    public List<AspectDto> getAllLifeAspects() {
+    @ApiOperation(value="Provides the list of all aspects, registered in the system")
+    public List<String> getAllLifeAspects() {
         return aspectService.getAllLifeAspects().stream()
-                .map((a) -> mapper.map(a, AspectDto.class))
+                .map(Aspect::getName)
                 .collect(Collectors.toList());
     }
 }
