@@ -32,5 +32,8 @@ logs/
 *.ipr
 target/
 
+# Upload files
+upload/
+
 # Dev profile
 src/main/resources/application-dev.properties
