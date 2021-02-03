@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.transaction.Transactional;
 import java.io.*;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ImageService {
@@ -30,7 +31,7 @@ public class ImageService {
         this.userRepository = userRepository;
     }
 
-    public Avatar getAvatarOfUser(User user) {
+    public Optional<Avatar> getAvatarOfUser(User user) {
         return avatarRepository.findByUser(user);
     }
 

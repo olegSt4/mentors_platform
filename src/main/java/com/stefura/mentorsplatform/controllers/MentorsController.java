@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -64,14 +65,12 @@ public class MentorsController {
                 .map(Profile::getUser)
                 .collect(Collectors.toList()));
 
-        for (Avatar avatar : avatars) {
-            for (MentorDto mentorDto : result) {
-                if (mentorDto.getId().equals(avatar.getUser().getId())) {
-                    mentorDto.setAvatarId(avatar.getId());
-                    break;
-                }
-            }
-        }
+        avatars.forEach(avatar -> {
+            result.stream()
+                    .filter(mentor -> mentor.getId().equals(avatar.getUser().getId()))
+                    .findFirst()
+                    .ifPresent(mentor -> mentor.setAvatarId(avatar.getId()));
+        });
 
         return result;
     }
@@ -88,10 +87,8 @@ public class MentorsController {
         Profile mentorProfile = userService.getProfileByUserId(mentorId);
         MentorDto result = mapper.map(mentorProfile, MentorDto.class);
 
-        Avatar mentorAvatar = imageService.getAvatarOfUser(mentorProfile.getUser());
-        if (mentorAvatar != null) {
-            result.setAvatarId(mentorAvatar.getId());
-        }
+        imageService.getAvatarOfUser(mentorProfile.getUser())
+            .ifPresent(avatar -> result.setAvatarId(avatar.getId()));
 
         return result;
     }
@@ -106,25 +103,22 @@ public class MentorsController {
         List<Avatar> clientsAvatars = imageService.getAvatarsOfUsers(reviews.stream()
                 .map(Review::getUser)
                 .collect(Collectors.toList()));
-        for (Review review : reviews) {
+        reviews.forEach(review -> {
             ReviewDto reviewDto = mapper.map(review, ReviewDto.class);
-            for (Avatar avatar : clientsAvatars) {
-                if (avatar.getUser().getId().equals(review.getUser().getId())) {
-                    reviewDto.setOwnerAvatarId(avatar.getId());
-                    break;
-                }
-            }
+            clientsAvatars.stream()
+                    .filter(clientsAvatar -> clientsAvatar.getUser().getId().equals(review.getUser().getId()))
+                    .findFirst()
+                    .ifPresent(clientsAvatar -> reviewDto.setOwnerAvatarId(clientsAvatar.getId()));
+
             reviewsDto.add(reviewDto);
-        }
+        });
 
         ExtendedProfileDto result = mapper.map(mentorProfile, ExtendedProfileDto.class);
         result.setAspects(aspectService.getAspectsNamesByProfileId(mentorProfile.getId()));
         result.setReviews(reviewsDto);
 
-        Avatar mentorAvatar = imageService.getAvatarOfUser(mentorProfile.getUser());
-        if (mentorAvatar != null) {
-            result.setAvatarId(mentorAvatar.getId());
-        }
+        imageService.getAvatarOfUser(mentorProfile.getUser())
+            .ifPresent(avatar -> result.setAvatarId(avatar.getId()));
 
         return result;
     }
