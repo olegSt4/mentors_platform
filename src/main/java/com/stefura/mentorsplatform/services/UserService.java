@@ -95,6 +95,10 @@ public class UserService implements UserDetailsService {
     @Transactional
     public Profile getProfileByUserId(Long id) {
         Profile profile = profileRepository.findByUserId(id);
+        if (profile == null) {
+            throw new EntityNotFoundException("The user with such id (" + id + ") does not exist!");
+        }
+
         profile.setViewsCount(profile.getViewsCount() + 1);
         profileRepository.save(profile);
       
