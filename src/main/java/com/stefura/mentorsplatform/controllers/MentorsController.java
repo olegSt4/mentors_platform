@@ -2,6 +2,7 @@ package com.stefura.mentorsplatform.controllers;
 
 import com.stefura.mentorsplatform.dto.ExtendedProfileDto;
 import com.stefura.mentorsplatform.dto.MentorDto;
+import com.stefura.mentorsplatform.dto.NewReviewDto;
 import com.stefura.mentorsplatform.dto.ReviewDto;
 import com.stefura.mentorsplatform.models.Avatar;
 import com.stefura.mentorsplatform.models.Profile;
@@ -16,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -121,5 +124,16 @@ public class MentorsController {
             .ifPresent(avatar -> result.setAvatarId(avatar.getId()));
 
         return result;
+    }
+
+    @PostMapping("/{mentorId}/profile/review")
+    @ApiOperation(value="Provides possibility to add a new review to mentor's profile", response=ReviewDto.class)
+    public ReviewDto addNewReview(@PathVariable Long mentorId, @RequestBody @Valid NewReviewDto newReviewDto) {
+        Review newReview = mapper.map(newReviewDto, Review.class);
+        newReview.setCreationTime(new Date());
+
+        newReview = userService.addNewReviewToProfile(mentorId, newReview);
+
+        return mapper.map(newReview, ReviewDto.class);
     }
 }
