@@ -1,5 +1,6 @@
 package com.stefura.mentorsplatform.services;
 
+import com.stefura.mentorsplatform.controllers.MentorsController;
 import com.stefura.mentorsplatform.exceptions.DuplicateUserDataException;
 import com.stefura.mentorsplatform.exceptions.EntityNotFoundException;
 import com.stefura.mentorsplatform.models.Profile;
@@ -11,9 +12,11 @@ import com.stefura.mentorsplatform.repositories.ReviewRepository;
 import com.stefura.mentorsplatform.repositories.UserRepository;
 import com.stefura.mentorsplatform.repositories.specifications.MentorSpecificationBuilder;
 import com.stefura.mentorsplatform.security.SecurityUser;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -132,13 +135,15 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public Review addNewReviewToProfile(Long mentorId, Review newReview, String authorFullName) {
+    public Review addNewReviewToProfile(Long mentorId, Review newReview) {
         Profile mentorProfile = profileRepository.findByUserId(mentorId).orElseThrow(() -> {
             throw new EntityNotFoundException(
                     "The mentor with such id (" + mentorId + ") doesn't have a profile or such a mentor doesn't exist!");
         });
-        User reviewOwner = userRepository.findByFullName(authorFullName).orElseThrow(() -> {
-            throw new EntityNotFoundException("Client with such full name (" + authorFullName + ") doesn't exist!");
+
+        String clientLogin = SecurityContextHolder.getContext().getAuthentication().getName();
+        User reviewOwner = userRepository.findByEmail(clientLogin).orElseThrow(() -> {
+            throw new EntityNotFoundException("Client with such login (" + clientLogin + ") doesn't exist!");
         });
 
         updateUserRating(mentorProfile.getUser(), newReview.getRating());

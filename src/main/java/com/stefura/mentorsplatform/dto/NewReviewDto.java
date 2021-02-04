@@ -6,10 +6,6 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class NewReviewDto {
-    @ApiModelProperty(value="The owner of the comment", example="Mr. John", required=true)
-    @NotNull
-    private String ownerFullName;
-
     @ApiModelProperty(value="Text of the comment", example="You're cool!", required=true)
     @NotNull
     private String comment;
@@ -18,14 +14,6 @@ public class NewReviewDto {
     private Double rating;
 
     public NewReviewDto() {
-    }
-
-    public String getOwnerFullName() {
-        return ownerFullName;
-    }
-
-    public void setOwnerFullName(String ownerFullName) {
-        this.ownerFullName = ownerFullName;
     }
 
     public String getComment() {
@@ -49,13 +37,12 @@ public class NewReviewDto {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NewReviewDto that = (NewReviewDto) o;
-        return ownerFullName.equals(that.ownerFullName) &&
-                comment.equals(that.comment) &&
+        return  comment.equals(that.comment) &&
                 Objects.equals(rating, that.rating);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(ownerFullName, comment, rating);
+        return Objects.hash(comment, rating);
     }
 }

@@ -132,7 +132,7 @@ public class MentorsController {
         Review newReview = mapper.map(newReviewDto, Review.class);
         newReview.setCreationTime(new Date());
 
-        newReview = userService.addNewReviewToProfile(mentorId, newReview, newReviewDto.getOwnerFullName());
+        newReview = userService.addNewReviewToProfile(mentorId, newReview);
 
         return mapper.map(newReview, ReviewDto.class);
     }
